@@ -155,6 +155,10 @@
     --  After logging in, the main menu is displayed in two rows
         instead of one.
 
+    --  The admin mode home page displays instead of the super
+        admin mode home page if you click on the logo in the header
+        or enter the home page url after logging in.	
+
 
 ================================================================
                   2.0 Bug Reports and Support
