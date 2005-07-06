@@ -1,0 +1,27 @@
+Test notes
+
+1. In the following situations, this exception should be more specific depending on situation:
+"Either you are not in session or you don't have privilege to <<Privilege>> this object"
+a) When calling method when not authorized
+b) creating an object when it already exists
+
+2. When creating an object, should receive confirmation message rather than just object ID number
+
+3. When attempting to read an object that does not exist, do not receive proper exception... just a "0".
+
+4. When attempting to update an object that does not exist, do not receive proper exception, rather "Index: 0, Size: 0"
+
+5. When deleting, object deletes, but no confirmation message provided
+
+6. When attempting to delete an object that does not exist, do not receive proper exception, rather "Index: 0, Size: 0"
+
+7. When credentials not correct, message reads "Could not authenticate the credentials".  Should state "Credentials Failed"
+or something along those lines.
+
+8.  When testing authentication by calling the testSessionTimeOut method, receive 3 exceptions:
+Could not authenticate the credentials
+Either you are not in session or you don't have privilege to READ this object
+Either you are not in session or you don't have privilege to READ this object
+
+Why does it even get to the point where the second and third appear?
+
