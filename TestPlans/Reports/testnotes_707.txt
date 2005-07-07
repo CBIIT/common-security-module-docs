@@ -1,0 +1,19 @@
+Test notes
+
+
+1) More exception improvements.  Here's the exception thrown to the client:
+
+CSM schema not configured:
+Either you are not in session or you don't have privilege to READ this object
+
+Server down:
+Cannot access HTTP invoker remote service at [http://localhost:8080/sdkremoting/http/remoteService]; nested exception is java.net.ConnectException: Connection refused: connect
+
+
+2) When turning security level to 0 in properties-service file, still reading as 0 and 
+accessing schema to make security decisions.  
+(FIXED TODAY)
+
+3) When security level set to 0, get NullPointerException when trying to kill session because no 
+session was created.  
+(FIXED TODAY)
