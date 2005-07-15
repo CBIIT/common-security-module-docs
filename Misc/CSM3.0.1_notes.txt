@@ -1,0 +1,264 @@
+                      Release Notes Addendum
+    
+                      caCORE Version 3.0.1
+                        CSM Version 3.0.1
+                         July 22, 2005
+
+       National Cancer Institute Center for Bioinformatics
+
+
+================================================================
+                            Contents
+================================================================
+    
+    
+    1.0 CSM
+          1.1 Release History
+          1.2 New Features and Updates
+	  1.3 Bugs Fixed Since Last Release
+          1.4 Known Issues
+    2.0 Bug Reports and Support
+    3.0 Documentation
+    4.0 NCICB Web Pages
+
+
+================================================================
+                            1.0 CSM
+================================================================
+
+
+----------------------------------------------------------------
+    1.1 Release History
+----------------------------------------------------------------
+
+    
+    CSM 3.0.1
+
+    --  22 July 2005
+    
+    CSM 3.0
+
+    --  31 March 2005    
+
+    
+----------------------------------------------------------------
+    1.2 New Features and Updates
+----------------------------------------------------------------
+
+    CSM provides a flexible, comprehensive solution to common
+    security objectives.  Development teams can use CSM services
+    rather than creating their own independent security methodology. 
+
+    +------------------------------------+
+    | CSM APIs                           |
+    +------------------------------------+
+    
+    This CSM release provides the following services:
+    
+    --  Standard Privileges - In order to become compliant with JAAS
+        and Authorization Policy CSM has adapted a standard set of 
+	privileges. These privileges can be used across systems.  
+	They will automatically populate into an authorization schema
+	with the SQL priming scripts provided in this release.  If a
+	schema has already been created, we have provided a migration
+	script that will add the privileges.
+	
+	Privileges include:
+	
+	CREATE - This privilege grants permission to a user to create
+	an entity.  This entity can be an object, a database entry, 
+	or a resource such as a network connection.
+	
+	ACCESS - This privilege allows a user to access a particular 
+	resource.  Examples of resources include a network 
+	connection, database connection, socket, module of the 
+	application, or even the application itself.
+
+	READ - This privilege permits the user to read data from a 
+	file, URL, socket, database, or an object. This can be used 
+	at an entity level signifying that the user is allowed to 
+	read data about a particular entry (which can be object or 
+	database row, etc.)
+
+	WRITE - This privilege allows a user to write data to a file,
+	URL, socket, database, or object. This can also be used at an
+	entity level signifying that the user is allowed to write 
+	data about a particular entity (which may include an object, 
+	database row, etc.)
+
+	UPDATE - This privilege grants permission at an entity level 
+	and signifies that the user is allowed to update and modify 
+	data for a particular entity.  Entities may include an 
+	object, an attribute of the object, a database row, etc.
+
+	DELETE - This privilege permits a user to delete a logical 
+	entity. This entity can be an object, a database entry, a 
+	resource such as a network connection, etc.
+
+	EXECUTE - This privilege allows a user to execute a 
+	particular resource. The resource can be a method, function,
+	behavior of the application, URL, button etc.     
+        
+		
+    --  Primitive Types - The secureObjects method of the API needs 
+        was modified to throw an error for data objects that contain
+	attributes of primitive data types. This method supports only
+	objects coded to the Java Bean specifications.
+
+    --  Reporting Functionality - The API was updated to provide new 
+        methods to support the reporting. This method will return the
+	object privilege map for the given user id. The object 
+	privilege map contains the protection elements with the 
+	corresponding privileges for a given user. 
+	
+    --  Cross-Browser Compatability - CSM was modified to work with 
+        both MySQL and Oracle.  The Authorization Schema database is
+	now independent to support various databases. 
+        
+        
+    +------------------------------------+
+    | User Provisioning Tool (UPT)       |
+    +------------------------------------+
+
+    --  Standard Privileges - The UPT was modified to accomodate the
+        Standard Privileges mentioned above.  We removed the create,
+	update and delete operations from the Privilege section of 
+	the Admin Mode. These operations were incorporated into a 
+	new Privilege section in the Super Admin Mode.  Therefore 
+	only a Super Admin can modify CSM Standard Privileges.  Admin
+	administrators will still have the ability to view the
+	privileges and assign them to roles, and subsequently to
+	users.
+        
+    --  Association Screens - We increased the width of the combo
+        boxes on the associations screens to allow for names with a 
+	large length to display properly.  All associated screens 
+	received this update.
+
+    --  Reporting Functionality - The UPT offers a new report in the
+        User section.  This report will display the list of all 
+	protection elements and the associated privileges for the 
+	selected user. This report is provided in a manner that
+	will be useful to the developers which are integrating the
+	security in their applications.  It provides the parameters
+	needed for the checkPermission method of the API, namely the
+	user name, the protection element object id, attribute and 
+	privilege.
+                   
+
+	
+----------------------------------------------------------------
+    1.3 Bugs Fixed Since Last Release
+----------------------------------------------------------------
+        
+    +------------------------------------+
+    | User Provisioning Tool (UPT)       |
+    +------------------------------------+
+
+    --  Mozilla Compatability - The latest NCICB UI standards
+        require web appications to support both IE and Mozilla 
+	browsers.  The UPT tool has been enhanced to function
+	properly with Mozilla's Firefox browser.
+
+    --  UI Fixes - The following errors were addressed:
+    
+	In the prior release, when clicking on the project logo in 
+	the header of the Super Admin mode, it redirected the user 
+	to the Admin home page.  Now the link correctly directs the
+	user to the Super Admin mode. 
+
+	In the Admin functionality, the main menu was displayed in 
+	two rows. The menu now displays in one row only.
+
+        
+----------------------------------------------------------------
+    1.4 Known Issues
+----------------------------------------------------------------
+
+    +------------------------------------+
+    | CSM APIs                           |
+    +------------------------------------+
+
+    --  The getSubject method of Authentication Manager has not been
+        implemented.
+    
+    --  Certain thrown exceptions may display hibernate-specific
+        error messages.
+        
+    --  The connection pool provided by hibernate (c3po connection
+        pool) shows inconsistent behavior in different environments.
+    
+      
+    +------------------------------------+
+    | UPT Tool                      	 |
+    +------------------------------------+
+
+    --  In the Protection Element and User section, when adding
+        object details, if you press enter you'll be taken back
+        to the object's home page.
+    	
+
+
+================================================================
+                  2.0 Bug Reports and Support
+================================================================
+    
+    Send email to ncicb@pop.nci.nih.gov to request support or
+    report a bug.  
+
+    In addition, mailing lists are used by the caCORE developer
+    and user community to exchange ideas and make announcements.
+    You can subscribe at this address:
+
+    --  http://list.nih.gov/archives/ncievs-l.html
+
+
+================================================================
+                        3.0 Documentation
+================================================================
+    
+    Documentation regarding CSM can be found at the following
+    location:
+
+    --  http://ncicb-dev.nci.nih.gov/core/CSM
+
+
+
+================================================================
+                        4.0 NCICB Web Pages
+================================================================
+    
+    The NCI Center for Bioinformatics
+
+    --  http://ncicb.nci.nih.gov/
+    
+    NCICB Application Support
+     
+    --  http://ncicbsupport.nci.nih.gov/sw/
+
+    NCICB Download Center
+
+    --  http://ncicb.nci.nih.gov/download/
+
+    caCORE
+
+    --  http://ncicb.nci.nih.gov/core
+    
+    caBIO
+
+    --  http://ncicb.nci.nih.gov/core/caBIO
+    
+    caDSR
+
+    --  http://ncicb.nci.nih.gov/core/caDSR 
+    --  http://ncicb.nci.nih.gov/xml 
+    
+    EVS
+
+    --  http://ncicb.nci.nih.gov/core/EVS
+    
+    CSM
+    
+    --  http://ncicb-dev.nci.nih.gov/core/CSM
+
+//end
