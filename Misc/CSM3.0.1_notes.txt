@@ -146,6 +146,70 @@
 	privilege.
                    
 
+    +---------------------------------------+
+    | CSM Enabled, Writeable APIs (for SDK) |
+    +---------------------------------------+
+    
+    This release offers additional functionality that makes the SDK 
+    more comprehensive.  It provides the ability to enable:
+    
+    Security
+    Session management
+    Writeable APIs
+
+    The CSM team provided this solution as a special addition to the 
+    SDK Toolkit.  It is provided in a separate csmsdk.zip file that 
+    can be found on the CSM download site:
+    http://ncicb.nci.nih.gov/download/downloadcsm.jsp
+
+    This solution is described in brief below:
+
+    --  CSM Integration - The CSM integration with SDK does not 
+        require additional coding on the part of the developers. All 
+	that is required is configuring CSM for the application. For 
+	instructions refer to the standard procedure in the CSM Guide
+	for Application Developers. After installing CSM, the 
+	application administrator(s) will need to use the UPT to 
+	create an authorization policy for the application.  An 
+	authorization policy is the knowledge of what to protect.  
+	Within the UPT, users can be given different roles (and 
+	permissions) for different domain objects. Any change in the 
+	authorization policy will be reflected in the application at 
+	run time. This means that the CSM service will continuously 
+	provide the latest authorization policy to the Application 
+	Service.
+
+        The SDK generates two components - the client and the server.
+	Only the server component is integrated with CSM for the 
+	purpose of authentication and authorization.
+
+        CSM will authenticate using the configured credential 
+	provider for that particular application. The CSM service 
+	integration is not obtrusive. There is a flag to turn the CSM
+	service on and off. 
+
+    --  Session Management - The Session management service has been
+        provided as a part of this solution. Whenever a user 
+	authenticates by successfully logging in, the Session Manager
+	(on the server side) generates a unique key for the user 
+	session. When the user sends another request the service does
+	not ask the user to authenticate again as long as the session
+	has not expired. Application administrators can use a 
+	configuration setting to declare a session time out period 
+	for their application. 
+
+    --  Writeable APIs - The first step toward writable APIs and 
+        transaction management is creating a simple writable API, 
+	which performs simple CRUD operations. These CRUD operations
+	will be exposed as a Persistence Manager service layer or any
+	other business service. The key benefit is to enable 
+	distributed computing.  The interface takes generic arguments
+	for CRUD operations thereby making it non-specific to any 
+	domain objects. As long as the passed object can be cast to 
+	any domain object within that domain, the operation is 
+	expected to execute. If execution fails, the method throws an 
+	exception. 
+
 	
 ----------------------------------------------------------------
     1.3 Bugs Fixed Since Last Release
